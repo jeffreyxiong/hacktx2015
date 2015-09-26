@@ -1,4 +1,6 @@
-from flask import Flask
+__author__ = 'phrayezzen'
+
+from flask import Flask, request, jsonify
 import sqlite3 as lite
 
 app = Flask(__name__)
@@ -16,8 +18,26 @@ cur = con.cursor()
 def hello_world():
     return 'Hello World!'
 
+@app.route('/video', methods=['GET', 'POST'])
+def video():
+    if request.method == "GET":
+        with con:
+            cur.execute("""SELECT * FROM contact""")
+            rows = {"result": cur.fetchall()}
+            return jsonify(rows)
+        return jsonify({})
+    elif request.method == "POST":
+        f = request.form
+        with con:
+            cur.execute("""INSERT INTO contact (firstName, lastName, phone, address, city, state, zip)
+                           VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                           (f['first'], f['last'], f['phone'], f['address'], f['city'], f['state'], f['zip']))
+            con.commit()
+            cur.execute("""SELECT * FROM contact WHERE contactId = ?""", (str(cur.lastrowid),))
+            contact = {"result": [cur.fetchone()]}
+            return jsonify(contact)
+        return jsonify({})
+
 
 if __name__ == '__main__':
     app.run()
-
-__author__ = 'phrayezzen'
