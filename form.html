@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<link rel="stylesheet" href="form.css">
+</head>
+
+
+<body>
+<h3> Advanced Search </h3>
+<form action="form.js">
+	<div class='form'>
+		<!-- Player 1 --> 
+		<div id='p1' class='form-area'>
+			<label for="player1"> Player 1: </label>
+			<input class="text" name="player1" type="text">
+			Winner? <input name="winner" type="radio" value="player1">
+			<label for="char1"> Character Name(s): </label>
+			<select name="char1">
+				<option value="falcon"> Falcon </option>
+				<option value="wolf"> Wolf </option>
+				<option value="jigglypuff"> Jigglypuff </option>
+			</select>
+
+		</div>
+		<!-- Player 2 -->
+		<a href="#"> add player </a>
+		<div id='p2' class='form-area'>
+			<label for="player2"> Player 2: </label>
+			<input class="text" name="player2" type="text">
+			Winner? <input name="winner" type="radio" value="player2">
+			<label for="char2"> Character Name(s): </label>
+			<select name="char1">
+				<option value="falcon"> Falcon </option>
+				<option value="wolf"> Wolf </option>
+				<option value="jigglypuff"> Jigglypuff </option>
+			</select>
+		</div>
+		<!-- Miscellaneous -->
+		<div class='form-area'>
+			<!-- Stage -->
+			<label for="stage"> Stage(s): </label>
+			<select name="stage">
+				<option value="falcon"> Falcon </option>
+				<option value="wolf"> Wolf </option>
+				<option value="jigglypuff"> Jigglypuff </option>
+			</select>
+			<!-- Match -->
+			<label for="matchnum"> # of Matches: </label>
+			<input class="text" name="matchnum" type="text">
+			<!-- Tournament -->
+			<label for="tournament"> Tournament Name: </label>
+			<select name="tournament">
+				<option value="falcon"> Falcon </option>
+				<option value="wolf"> Wolf </option>
+				<option value="jigglypuff"> Jigglypuff </option>
+			</select>
+			<!-- Year -->
+			<label for="year"> Year: </label>
+			<select name="year">
+				<option value="2001"> 2001 </option>
+				<option value="2002"> 2002 </option>
+				<option value="2003"> 2003 </option>
+				<option value="2004"> 2004 </option>
+				<option value="2005"> 2005 </option>
+				<option value="2006"> 2006 </option>
+				<option value="2007"> 2007 </option>
+				<option value="2008"> 2008 </option>
+				<option value="2009"> 2009 </option>
+				<option value="2010"> 2010 </option>
+				<option value="2011"> 2011 </option>
+				<option value="2012"> 2012 </option>
+				<option value="2013"> 2013 </option>
+				<option value="2014"> 2014 </option>
+				<option value="2015"> 2015 </option>
+			</select>
+		</div>
+	</div>
+
+	<input type="submit">
+	
+</form>
+
+
+
+
+
+</body>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="form.js"></script>
+
+</html>
