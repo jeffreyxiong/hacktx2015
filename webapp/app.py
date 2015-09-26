@@ -21,6 +21,7 @@ def hello_world():
 @app.route('/video', methods=['GET', 'POST'])
 def video():
     if request.method == "GET":
+        f = request.form
         with con:
             cur.execute("""SELECT * FROM contact""")
             rows = {"result": cur.fetchall()}
