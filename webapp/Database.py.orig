@@ -89,6 +89,10 @@ class Database(object):
             'year': '2015',
             'matches': 5,
             'stages': ['bf', 'dl', 'ps', 'ps', 'fod'],
+<<<<<<< HEAD
+
+=======
+>>>>>>> 92fe17c19167c1ee365e7bc7665108092160a079
         })
 
         self.db.games.insert_many([
