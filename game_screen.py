@@ -1,6 +1,12 @@
+# game_screen.py
+# Hack TX 2015 - Eddie Dugan, Jeffrey Xiong, May Zhong, Xilin Liu
+
 import cv2
+import video_parser
 import numpy
 from matplotlib import pyplot as plt
+
+# capture end-game screen
 
 
 def test_methods(screencaps, template_file):
