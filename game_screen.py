@@ -2,9 +2,9 @@
 # Hack TX 2015 - Eddie Dugan, Jeffrey Xiong, May Zhong, Xilin Liu
 
 import cv2
-import video_processor
 import numpy
 from matplotlib import pyplot as plt
+
 
 # capture end-game screen
 
@@ -26,7 +26,7 @@ def match_game_screen(screencap, template_file):
     w, h = template.shape[::-1]
 
     methods = ['cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR_NORMED']
-    matches = {}
+    matches = []
     # template-matching
     for meth in methods:
         img = img2.copy()
@@ -51,9 +51,62 @@ def match_game_screen(screencap, template_file):
             plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
             plt.suptitle(method)
             plt.show()
+            matches.append(max_val)
+    if len(matches) == 2:
+        return True
+    else:
+        return False
 
-    return matches
+
+def match_result_screen(screencap, template_file):
+    # determines whether a screencap shows the end of a game
+
+    # initialize images
+    img = cv2.cvtColor(cv2.imread(screencap).copy(), cv2.COLOR_BGR2GRAY)
+    img2 = img.copy()
+
+    template = cv2.imread(template_file, 0)
+    w, h = template.shape[::-1]
+
+    methods = ['cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR_NORMED']
+    matches = []
+    # template-matching
+    for meth in methods:
+        img = img2.copy()
+        method = eval(meth)
+        res = cv2.matchTemplate(img, template, method)
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        print(meth + '------')
+        # If the method is TM_SQDIFF or TM_SQDIFF_NORMED, take minimum
+        if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
+            top_left = min_loc
+        else:
+            top_left = max_loc
+
+        bottom_right = (top_left[0] + w, top_left[1] + h)
+        cv2.rectangle(img, top_left, bottom_right, 255, 2)
+        # print(max_val)
+        if max_val > 0.9:
+            print('TRUE')
+            plt.subplot(121), plt.imshow(res, cmap='gray')
+            plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
+            plt.subplot(122), plt.imshow(img, cmap='gray')
+            plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+            plt.suptitle(method)
+            plt.show()
+            matches.append(max_val)
+
+    if len(matches) == 2:
+        return True
+    else:
+        return False
 
 
-test_methods(['game_sc1.png', 'game_sc2.png', 'game_sc3.png', 'game_sc4.png', 'game_sc5.png', 'game_sc6.png', 'game_sc7.png'],
-             'game.png')
+test_methods(['game_tests/' + x for x in
+              ['game_sc1.png', 'game_sc2.png', 'game_sc3.png', 'game_sc4.png', 'game_sc5.png', 'game_sc6.png',
+               'game_sc7.png']], 'game.png')
+
+test_methods(
+    ['result_tests/' + x for x in
+     ['result_sc1.png', 'result_sc2.png', 'result_sc3.png', 'result_sc4.png', 'result_sc5.png', 'result_sc6.png']],
+    'result_template.png')

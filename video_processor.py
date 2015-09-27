@@ -31,6 +31,8 @@ class video_processor:
         check_char = False
         check_game = False
         check_result = False
+        ret, frame = cap.read()
+        frame = frame[1:2, 2:3]
 
         while cap.isOpened():
             ret, frame = cap.read()
