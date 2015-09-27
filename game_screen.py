@@ -2,7 +2,7 @@
 # Hack TX 2015 - Eddie Dugan, Jeffrey Xiong, May Zhong, Xilin Liu
 
 import cv2
-import video_parser
+import video_processor
 import numpy
 from matplotlib import pyplot as plt
 
