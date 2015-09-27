@@ -16,12 +16,11 @@ CREATE TABLE game (
   vID INTEGER,
   winner INTEGER,
   loser INTEGER,
-  stage INTEGER,
+  stage STRING,
   match INTEGER,
   FOREIGN KEY(vID) REFERENCES video(vID),
   FOREIGN KEY(winner) REFERENCES player(pID),
-  FOREIGN KEY(loser) REFERENCES player(pID),
-  FOREIGN KEY(stage) REFERENCES stage(sID)
+  FOREIGN KEY(loser) REFERENCES player(pID)
 );
 
 DROP TABLE IF EXISTS player;
@@ -30,25 +29,12 @@ CREATE TABLE player (
   name TEXT
 );
 
-DROP TABLE IF EXISTS character;
-CREATE TABLE character (
-  cID INTEGER PRIMARY KEY UNIQUE NOT NULL,
-  name TEXT
-);
-
-DROP TABLE IF EXISTS stage;
-CREATE TABLE stage (
-  sID INTEGER PRIMARY KEY UNIQUE NOT NULL,
-  name TEXT
-);
-
 DROP TABLE IF EXISTS playerGameCharacter;
 CREATE TABLE playerGameCharacter (
   game INTEGER,
   player INTEGER,
-  character INTEGER,
+  character STRING,
   FOREIGN KEY(game) REFERENCES game(gID),
   FOREIGN KEY(player) REFERENCES player(pID),
-  FOREIGN KEY(character) REFERENCES character(cID),
   PRIMARY KEY (game, player, character)
 );

@@ -21,6 +21,39 @@ def hello_world():
 @app.route('/video', methods=['GET', 'POST'])
 def video():
     if request.method == "GET":
+        f = request.form
+        query = 'SELECT url FROM video '
+        if 'player1' in f:
+            if 'winner' in f:
+                if f['winner']:
+                    query += 'winner = ' + f['player1'] + ' and '
+                else:
+                    query += 'loser = ' + f['player1'] + ' and '
+            else:
+                query += '(winner = ' + f['player1'] + ' or loser = ' + f['player1'] + ') and '
+
+        if 'player2' in f:
+            if 'winner' in f:
+                if f['winner']:
+                    query += 'loser = ' + f['player2'] + ' and '
+                else:
+                    query += 'winner = ' + f['player2'] + ' and '
+            else:
+                query += '(winner = ' + f['player2'] + ' or loser = ' + f['player2'] + ') and '
+
+        if 'char1' in f:
+            query += 'SELECT v.vID FROM PlayerGameCharacter as p join video as v on v.winner = p.player or v.loser = p.player where p.character = '+ f[char1] + ' and '
+        if 'char2' in f:
+            query += 'SELECT v.vID FROM PlayerGameCharacter as p join video as v on v.winner = p.player or v.loser = p.player where p.character = ' + f[char2] + ' and '
+        if 'stage' in f:
+            query += 'SELECT v.vID FROM Game as g join video as v on v.winner = p.player or v.loser = p.player where g.game= ' + f[game] + ' and '
+        #match num?
+        if 'tournament' in f:
+            query += 'tournament = ' + f[tournament] + ' and '
+        if 'year' in f:
+            query += 'year = ' + f[year] + ' and '
+        query = query[:-5]
+        
         with con:
             cur.execute("""SELECT * FROM contact""")
             rows = {"result": cur.fetchall()}
