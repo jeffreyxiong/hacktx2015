@@ -88,7 +88,7 @@ class Database(object):
             'tournament': 'EVO',
             'year': '2015',
             'stages': ['bf', 'dl', 'ps', 'ps', 'fod'],
-            
+
         })
 
     def get_videos(self, q):
