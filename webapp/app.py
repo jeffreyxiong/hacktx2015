@@ -42,16 +42,18 @@ def video():
                 query += '(winner = ' + f['player2'] + ' or loser = ' + f['player2'] + ') and '
 
         if 'char1' in f:
-            query += 'SELECT v.vID FROM PlayerGameCharacter as p join video as v on v.winner = p.player or v.loser = p.player where p.character = '+ f[char1] + ' and '
+            query += 'SELECT v.vID FROM PlayerGameCharacter as p join video as v on ' \
+                     'v.winner = p.player or v.loser = p.player where p.character = '+ f['char1'] + ' and '
         if 'char2' in f:
-            query += 'SELECT v.vID FROM PlayerGameCharacter as p join video as v on v.winner = p.player or v.loser = p.player where p.character = ' + f[char2] + ' and '
+            query += 'SELECT v.vID FROM PlayerGameCharacter as p join video as v on ' \
+                     'v.winner = p.player or v.loser = p.player where p.character = ' + f['char2'] + ' and '
         if 'stage' in f:
-            query += 'SELECT v.vID FROM Game as g join video as v on v.winner = p.player or v.loser = p.player where g.game= ' + f[game] + ' and '
+            query += 'SELECT v.vID FROM Game as g join video as v on v.winner = p.player or v.loser = p.player where g.game= ' + f['stage'] + ' and '
         #match num?
         if 'tournament' in f:
-            query += 'tournament = ' + f[tournament] + ' and '
+            query += 'tournament = ' + f['tournament'] + ' and '
         if 'year' in f:
-            query += 'year = ' + f[year] + ' and '
+            query += 'year = ' + f['year'] + ' and '
         query = query[:-5]
         
         with con:

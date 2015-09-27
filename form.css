@@ -11,6 +11,8 @@
 .form-area{
 	display: block;
 	width: 300px;
+	height: auto;
+	padding-bottom: 50px;
 	margin-bottom: 15px;
 }
 
@@ -20,7 +22,13 @@ input, select {
 	display: block;
 }
 
+#p2-inputs{
+	display: none;
+}
 
+#submit{
+	width: 80%;
+}
 
 .text{
 	padding: 5px;

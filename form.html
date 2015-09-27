@@ -4,6 +4,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="form.css">
+	
 </head>
 
 
@@ -13,29 +14,33 @@
 	<div class='form'>
 		<!-- Player 1 --> 
 		<div id='p1' class='form-area'>
-			<label for="player1"> Player 1: </label>
-			<input class="text" name="player1" type="text">
-			Winner? <input name="winner" type="radio" value="player1">
-			<label for="char1"> Character Name(s): </label>
-			<select name="char1">
-				<option value="falcon"> Falcon </option>
-				<option value="wolf"> Wolf </option>
-				<option value="jigglypuff"> Jigglypuff </option>
-			</select>
+			<div id='p1-inputs'>
+				<label for="player1"> Player 1: </label>
+				<input class="text" name="player1" type="text">
+				Winner? <input name="winner" type="radio" value="player1">
+				<label for="char1"> Character Name(s): </label>
+				<select name="char1">
+					<option value="falcon"> Falcon </option>
+					<option value="wolf"> Wolf </option>
+					<option value="jigglypuff"> Jigglypuff </option>
+				</select>
+			</div>
 
 		</div>
 		<!-- Player 2 -->
-		<a href="#"> add player </a>
 		<div id='p2' class='form-area'>
-			<label for="player2"> Player 2: </label>
-			<input class="text" name="player2" type="text">
-			Winner? <input name="winner" type="radio" value="player2">
-			<label for="char2"> Character Name(s): </label>
-			<select name="char1">
-				<option value="falcon"> Falcon </option>
-				<option value="wolf"> Wolf </option>
-				<option value="jigglypuff"> Jigglypuff </option>
-			</select>
+			<a href="#" id='add-p'> add player </a>
+			<div id='p2-inputs'>
+				<label for="player2"> Player 2: </label>
+				<input class="text" name="player2" type="text">
+				Winner? <input name="winner" type="radio" value="player2">
+				<label for="char2"> Character Name(s): </label>
+				<select name="char1">
+					<option value="falcon"> Falcon </option>
+					<option value="wolf"> Wolf </option>
+					<option value="jigglypuff"> Jigglypuff </option>
+				</select>
+			</div>
 		</div>
 		<!-- Miscellaneous -->
 		<div class='form-area'>
@@ -76,9 +81,12 @@
 				<option value="2015"> 2015 </option>
 			</select>
 		</div>
+		<div id='submit'>
+			<input type="submit">
+		</div>
 	</div>
 
-	<input type="submit">
+	
 	
 </form>
 
