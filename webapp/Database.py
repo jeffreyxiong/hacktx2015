@@ -87,9 +87,18 @@ class Database(object):
             'url': 'https://www.youtube.com/watch?v=Ea9_nwcN37I',
             'tournament': 'EVO',
             'year': '2015',
+            'matches': 5,
             'stages': ['bf', 'dl', 'ps', 'ps', 'fod'],
-            
         })
 
+        self.db.games.insert_many([
+            {'stage': 'bf', 'video': inserted_id, 'winner': 'Armada', 'loser': 'Hungrybox', 'winnerChar': 'fox', 'loserChar': 'jigglypuff', 'match': 1},
+            {'stage': 'dl', 'video': inserted_id, 'winner': 'Hungrybox', 'loser': 'Armada', 'winnerChar': 'jigglypuff', 'loserChar': 'fox', 'match': 2},
+            {'stage': 'ps', 'video': inserted_id, 'winner': 'Hungrybox', 'loser': 'Armada', 'winnerChar': 'jigglypuff', 'loserChar': 'fox', 'match': 3},
+            {'stage': 'ps', 'video': inserted_id, 'winner': 'Armada', 'loser': 'Hungrybox', 'winnerChar': 'fox', 'loserChar': 'jigglypuff', 'match': 4},
+            {'stage': 'fod', 'video': inserted_id, 'winner': 'Armada', 'loser': 'Hungrybox', 'winnerChar': 'fox', 'loserChar': 'jigglypuff', 'match': 5}
+        ])
+
     def get_videos(self, q):
-        return self.db.videos.find(q)
+        return self.db.games.find(q)
+
