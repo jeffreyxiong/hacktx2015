@@ -1,7 +1,7 @@
 from apiclient.discovery import build
 from secret import secret_key
 
-DEVELOPER_KEY = 'AIzaSyCkTsiDORr0CeVAITisYAxw8EU3G4Zqqps'
+DEVELOPER_KEY = secret_key
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
