@@ -22,6 +22,8 @@ def hello_world():
 def video():
     if request.method == "GET":
         f = request.form
+
+
         query = 'SELECT url FROM video '
         if 'player1' in f:
             if 'winner' in f:
